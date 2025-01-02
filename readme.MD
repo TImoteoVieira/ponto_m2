@@ -107,6 +107,10 @@ pip install -r requirements.txt
    Aplique as migrações para criar as tabelas:
    ```bash
    python3 manage.py migrate
+   ```
+   
+   Aplique os Seeds para criar a empresa M2:
+   ```
    python3 manage.py seed
    ```
 
