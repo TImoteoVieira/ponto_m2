@@ -56,13 +56,44 @@ As views são organizadas para atender cada funcionalidade principal:
 
 ---
 
-## Configuração do Ambiente ⚙️🖥️📦
 
-1. **Requisitos**:
+### Requisitos:
    - Python 3.8+
    - Django 3.2+
    - PostgreSQL
    - Docker e Docker Compose (opcional para ambiente conteinerizado)
+
+### Passo a passo:
+
+1. **Configuração do Ambiente ⚙️🖥️📦**
+
+Clonar o Repositório Certifique-se de clonar o repositório para sua máquina local:
+```
+   git clone https://github.com/TImoteoVieira/ponto_m2.git
+   cd ponto_m2
+```
+Criar um Ambiente Virtual Crie um ambiente virtual para isolar as dependências do projeto:
+```
+python3 -m venv venv
+```
+
+Linux/MacOS:
+```
+source venv/bin/activate
+```
+
+
+
+Windows (cmd):
+```
+venv\Scripts\activate
+```
+
+Instalar Dependências Com o ambiente virtual ativado, instale as dependências listadas no arquivo requirements.txt:
+
+```
+pip install -r requirements.txt
+```
 
 2. **Configuração do Banco de Dados**:
    Um arquivo `docker-compose.yml` é fornecido para facilitar a configuração do PostgreSQL. Certifique-se de que o Docker esteja instalado e em execução. 🐳📂💾
