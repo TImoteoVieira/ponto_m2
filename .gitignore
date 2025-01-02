@@ -2,6 +2,10 @@
 *.pyc
 __pycache__/
 
+# Ambiente virtual
+venv/
+.venv/
+
 # Django
 db.sqlite3
 /staticfiles/
