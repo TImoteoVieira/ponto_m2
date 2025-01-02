@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Pontos{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Registros de Pontos</h1>
+    <div>
+        <a href="{% url 'ponto-create' %}" class="btn btn-success">Novo Registro</a>
+        <a href="{% url 'relatorio' %}?{{ request.GET.urlencode }}" class="btn btn-outline-secondary">
+            Gerar Relatório
+        </a>        
+    </div>
+</div>
+
+<!-- Formulário de Filtros -->
+<div class="card p-3 mb-4">
+    <form method="get" class="row g-3">
+        <div class="col-md-4">
+            <label for="funcionario" class="form-label">Funcionário</label>
+            <select name="funcionario" id="funcionario" class="form-select">
+                <option value="">Todos</option>
+                {% for funcionario in funcionarios %}
+                <option value="{{ funcionario.id }}" {% if request.GET.funcionario == funcionario.id|stringformat:"s" %}selected{% endif %}>
+                    {{ funcionario.user.username }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="data_inicio" class="form-label">Data Início</label>
+            <input type="date" name="data_inicio" id="data_inicio" class="form-control" value="{{ request.GET.data_inicio }}">
+        </div>
+        <div class="col-md-3">
+            <label for="data_fim" class="form-label">Data Fim</label>
+            <input type="date" name="data_fim" id="data_fim" class="form-control" value="{{ request.GET.data_fim }}">
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+        </div>
+    </form>
+</div>
+
+<!-- Tabela de Resultados -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Funcionário</th>
+            <th>Data</th>
+            <th>Entrada</th>
+            <th>Intervalo</th>
+            <th>Saída</th>
+            <th>Horas Trabalhadas</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ponto in object_list %}
+        <tr>
+            <td>{{ ponto.funcionario.user.username }}</td>
+            <td>{{ ponto.data }}</td>
+            <td>{{ ponto.entrada|default:"-" }}</td>
+            <td>{{ ponto.intervalo|default:"-" }}</td>
+            <td>{{ ponto.saida|default:"-" }}</td>
+            <td>{{ ponto.horas_trabalhadas|default:"-" }}</td>
+            <td class="d-flex gap-2">
+                <a href="{% url 'ponto-update' ponto.pk %}" class="btn btn-primary btn-sm">Editar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7" class="text-center">Nenhum registro encontrado.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

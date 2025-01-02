@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Empresas{% endblock %}
+
+{% block content %}
+<h1>Empresas</h1>
+<a href="{% url 'empresa-create' %}" class="btn btn-success mb-3">Nova Empresa</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Endereço</th>
+            <th>Telefone</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for empresa in object_list %}
+        <tr>
+            <td>{{ empresa.nome }}</td>
+            <td>{{ empresa.endereco }}</td>
+            <td>{{ empresa.telefone }}</td>
+            <td>
+                <a href="{% url 'empresa-update' empresa.pk %}" class="btn btn-primary btn-sm">Editar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
