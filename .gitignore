@@ -1,0 +1,17 @@
+# Python
+*.pyc
+__pycache__/
+
+# Django
+db.sqlite3
+/staticfiles/
+media/
+
+# Docker
+*.log
+*.pid
+.env
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
