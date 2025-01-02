@@ -103,10 +103,11 @@ pip install -r requirements.txt
    docker compose up -d --build 
    ```
 
-3. **Migrações do Banco**:
+3. **Migrações e Seeds do Banco**:
    Aplique as migrações para criar as tabelas:
    ```bash
    python3 manage.py migrate
+   python3 manage.py seed
    ```
 
 4. **Execução do Servidor**:
