@@ -1,0 +1,18 @@
+services:
+  ponto_database:
+    image: postgres:15
+    container_name: ponto_database
+    env_file:
+      - .env 
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DB}
+      POSTGRES_HOST: ${DB_HOST}
+    volumes:
+      - controle_ponto_volume:/var/lib/postgresql/data
+
+volumes:
+  controle_ponto_volume:
