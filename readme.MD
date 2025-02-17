@@ -156,4 +156,4 @@ Sinta-se à vontade para contribuir com este projeto. Certifique-se de seguir es
 
 ## Contato 📧💬📞
 
-Para dúvidas ou sugestões, entre em contato em [timoteodeveloper@gmail.com]. 🌟✉️📬
+Para dúvidas ou sugestões, entre em contato timoteodeveloper@gmail.com ✉️📬
